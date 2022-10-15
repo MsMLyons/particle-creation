@@ -23,8 +23,11 @@ ctx.fillStyle = 'cyan';
 ctx.font = '30px Roboto';
 // text, x & y coordinates for text location
 ctx.fillText('M', 30, 50);
+// draw a box around the example text, above
 //ctx.strokeStyle = 'purple';
 //ctx.strokeRect(0, 0, 100, 100);
+
+// gets image data, scanning from coordinates x & y at position zero, expanding to 100 pixels
 const data = ctx.getImageData(0, 0, 100, 100);
 
 class Particle {
@@ -62,9 +65,11 @@ class Particle {
     }
 }
 
-// initialize particles by filling array with particle objects
+// create new particle arrays
 function init() {
+    // initialize with an empty array
     particleArray = [];
+    //use for loop to automate creation of particles
     // can change value in i < 1000 for different effects
     for (let i = 0; i < 1000; i++) {
         let x = Math.random() * canvas.width;
@@ -81,7 +86,9 @@ console.log(particleArray);
 
 // animate particles
 function animate(){
+    // clear the frame between animations
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // iterate through array and call draw method
     for (let i = 0; i < particleArray.length; i++) {
         particleArray[i].draw();
         particleArray[i].update();
